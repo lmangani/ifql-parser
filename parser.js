@@ -247,7 +247,7 @@ return {
     if(!parsedResult.length) throw 'Invalid sql: ' + sql;
     if(parsedResult.length > 1) {
       // console.error(JSON.stringify(parsedResult, null, 2));
-      throw 'SQL ambiguous: Report to developers ' + sql;
+      //throw 'SQL ambiguous: Report to developers ' + sql;
     }
 
     const result = parsedResult[0];
@@ -255,7 +255,7 @@ return {
     const referencedTables = {};
     const joins = [];
     walk(result, node => {
-      if(node.type == 'table') { 
+      if(node.type == 'table') {
 		var select = node.table ? node.table.split('.') : [];
 		if(select && select.length > 2){
 			node.db = select[0];

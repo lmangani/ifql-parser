@@ -11,9 +11,9 @@
     "mocha": "^3.3.0"
   },
   "scripts": {
-    "do_not_compile": "nearleyc ./sql.ne -o sql-parse.js",
+    "compile": "nearleyc ./src/ifql.ne -o sql-parse.js",
     "test": "npm run compile && mocha ./test",
-    "do_not_postinstall": "npm run compile"
+    "postinstall": "npm run compile"
   },
   "repository": {
     "type": "git",
