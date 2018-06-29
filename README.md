@@ -1,6 +1,16 @@
 # ifql-parser
 InfluxDB Query Language parser
 
+### Status
+
+* Work in progress! Testers and Contributors welcome
+
+#### Todo
+
+* [x] Baseline SQL parser
+* [x] FROM parser
+* [ ] TIME parser
+* [ ] Quotes parser
 
 ### Example
 ```
