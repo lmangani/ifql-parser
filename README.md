@@ -1,5 +1,5 @@
-# ifql-parser
-InfluxDB Query Language parser
+# ifql-parser <img src="https://user-images.githubusercontent.com/1423657/38137158-590eefbc-3423-11e8-96dd-487022b5618c.gif" width=100 />
+InfluxDB Query Language parser using [nearley](https://www.npmjs.com/package/nearley) grammar
 
 ### Status
 
@@ -9,7 +9,7 @@ InfluxDB Query Language parser
 
 * [x] Baseline SQL parser
 * [x] FROM parser
-* [ ] TIME parser
+* [ ] TIME math
 * [ ] Quotes parser
 
 ### Example
@@ -17,3 +17,6 @@ InfluxDB Query Language parser
 const parser = require('ifql-parser')();
 parser.parse('SELECT sum("load") AS mean_cpu FROM telegraf.autogen.cpu WHERE time > now() GROUP BY time(3600)');
 ```
+
+##### Credits
+IFQL variant based on [js-sql-parse](https://github.com/justinkenel/js-sql-parse)
