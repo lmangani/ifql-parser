@@ -11,9 +11,9 @@
     "mocha": "^3.3.0"
   },
   "scripts": {
-    "compile": "nearleyc ./sql.ne -o sql-parse.js",
+    "do_not_compile": "nearleyc ./sql.ne -o sql-parse.js",
     "test": "npm run compile && mocha ./test",
-    "postinstall": "npm run compile"
+    "do_not_postinstall": "npm run compile"
   },
   "repository": {
     "type": "git",
@@ -30,5 +30,5 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/lmangani/ifql-parser/issues"
-  },
+  }
 }
