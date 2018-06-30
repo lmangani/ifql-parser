@@ -7,12 +7,16 @@ InfluxDB Query Language parser
 
 #### Todo
 
-* [x] Baseline SQL parser
-* [x] FROM parser
-* [x] TIME math
-* [ ] Quotes parser
-
-### Example
+* Parser
+  * [x] Baseline SQL parser
+  * [x] FROM parser
+  * [x] TIME math
+  * [ ] Quotes parser
+* Output
+  * [x] JSON output
+  * [x] Elastic DSL output
+  
+### JSON Example
 ```
 const parser = require('ifql-parser')();
 parser.parse('SELECT sum("load") AS mean_cpu FROM telegraf.autogen.cpu WHERE time > now() - 6h GROUP BY time(3600)');
