@@ -1,6 +1,6 @@
 {
   "name": "ifql-parser",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A nearley based ifql parser and analyzer",
   "main": "parser.js",
   "dependencies": {
@@ -12,7 +12,7 @@
     "mocha": "^5.2.0"
   },
   "scripts": {
-    "compile": "nearleyc ./src/ifql.ne -o sql-parse.js",
+    "compile": "nearleyc ./src/ifql.ne -o ifql-parse.js",
     "test": "npm run compile && mocha ./test",
     "postinstall": "npm run compile"
   },

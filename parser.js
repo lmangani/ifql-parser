@@ -1,5 +1,5 @@
 const nearley = require('nearley');
-const grammar = require('./sql-parse');
+const grammar = require('./ifql-parse');
 const timestring = require('timestring');
 
 let count=0;
