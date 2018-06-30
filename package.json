@@ -1,6 +1,6 @@
 {
   "name": "ifql-parser",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "description": "A nearley based ifql parser and analyzer",
   "main": "parser.js",
   "dependencies": {
@@ -25,6 +25,7 @@
     "sql",
     "ifql",
     "influx",
+    "elastic",
     "parse"
   ],
   "author": "lorenzo.mangani@gmail.com",
