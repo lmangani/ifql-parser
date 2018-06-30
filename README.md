@@ -12,6 +12,7 @@ InfluxDB Query Language parser
   * [x] FROM parser
   * [x] TIME math
   * [ ] Quotes parser
+  * [ ] Cleanup & Tests
 * Output
   * [x] JSON output
   * [x] Elastic DSL output
