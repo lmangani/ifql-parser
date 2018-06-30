@@ -213,7 +213,9 @@ var grammar = {
     {"name": "table_exp$subexpression$3", "symbols": []},
     {"name": "table_exp$subexpression$4", "symbols": ["__", "order_clause"]},
     {"name": "table_exp$subexpression$4", "symbols": []},
-    {"name": "table_exp", "symbols": ["from_clause", "table_exp$subexpression$1", "table_exp$subexpression$2", "table_exp$subexpression$3", "table_exp$subexpression$4"], "postprocess": 
+    {"name": "table_exp$subexpression$5", "symbols": ["__", "fill_clause"]},
+    {"name": "table_exp$subexpression$5", "symbols": []},
+    {"name": "table_exp", "symbols": ["from_clause", "table_exp$subexpression$1", "table_exp$subexpression$2", "table_exp$subexpression$3", "table_exp$subexpression$4", "table_exp$subexpression$5"], "postprocess": 
         d => ({
           type: 'from_table',
           from: d[0],
@@ -229,6 +231,7 @@ var grammar = {
     {"name": "from_clause", "symbols": ["FROM", "__", "subquery"], "postprocess": d => ({type: 'from', subquery: d[2]})},
     {"name": "group_by_clause", "symbols": ["GROUP", "__", "BY", "__", "selection_column_comma_list"], "postprocess": d => ({ type: 'group_by', columns: d[4] })},
     {"name": "group_by_clause", "symbols": ["GROUP", "__", "BY", {"literal":"("}, "_", "selection_column_comma_list", "_", {"literal":")"}], "postprocess": d => ({ type: 'group_by', columns: d[6] })},
+    {"name": "fill_clause", "symbols": ["FILL", {"literal":"("}, "_", "selection_column_comma_list", "_", {"literal":")"}], "postprocess": d => ({ type: 'fill', columns: d[6] })},
     {"name": "selection", "symbols": [{"literal":"*"}], "postprocess": d => ({type:'select_all'})},
     {"name": "selection", "symbols": ["selection_column_comma_list"], "postprocess": d => d[0]},
     {"name": "selection_column_comma_list", "symbols": ["selection_column"], "postprocess": d => ({type: 'selection_columns', columns: [d[0]]})},
@@ -630,6 +633,7 @@ var grammar = {
     {"name": "FALSE", "symbols": [/[Ff]/, /[Aa]/, /[Ll]/, /[Ss]/, /[Ee]/]},
     {"name": "FROM", "symbols": [/[Ff]/, /[Rr]/, /[Oo]/, /[Mm]/]},
     {"name": "GROUP", "symbols": [/[Gg]/, /[Rr]/, /[Oo]/, /[Uu]/, /[Pp]/]},
+    {"name": "FILL", "symbols": [/[Ff]/, /[Ii]/, /[Ll]/, /[Ll]/]},
     {"name": "HAVING", "symbols": [/[Hh]/, /[Aa]/, /[Vv]/, /[Ii]/, /[Nn]/, /[Gg]/]},
     {"name": "IF", "symbols": [/[Ii]/, /[Ff]/]},
     {"name": "IN", "symbols": [/[Ii]/, /[Nn]/]},

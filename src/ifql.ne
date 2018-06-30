@@ -65,7 +65,7 @@ query_spec ->
     %}
 
 table_exp ->
-    from_clause (__ where_clause | null) (__ group_by_clause | null) (__ having_clause | null) (__ order_clause | null) {%
+    from_clause (__ where_clause | null) (__ group_by_clause | null) (__ having_clause | null) (__ order_clause | null)  (__ fill_clause | null) {%
       d => ({
         type: 'from_table',
         from: d[0],
@@ -87,6 +87,9 @@ from_clause ->
 group_by_clause ->
     GROUP __ BY __ selection_column_comma_list {% d => ({ type: 'group_by', columns: d[4] }) %}
   | GROUP __ BY "(" _ selection_column_comma_list _ ")" {% d => ({ type: 'group_by', columns: d[6] }) %}
+
+fill_clause ->
+    FILL "(" _ selection_column_comma_list _ ")" {% d => ({ type: 'fill', columns: d[6] }) %}
 
 selection ->
     "*" {% d => ({type:'select_all'}) %}
@@ -584,6 +587,8 @@ FALSE -> [Ff] [Aa] [Ll] [Ss] [Ee]
 FROM -> [Ff] [Rr] [Oo] [Mm]
 
 GROUP -> [Gg] [Rr] [Oo] [Uu] [Pp]
+
+FILL -> [Ff] [Ii] [Ll] [Ll]
 
 HAVING -> [Hh] [Aa] [Vv] [Ii] [Nn] [Gg]
 
