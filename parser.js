@@ -1,5 +1,6 @@
 const nearley = require('nearley');
 const grammar = require('./sql-parse');
+const timestring = require('timestring');
 
 let count=0;
 function walk(obj, fn) {
@@ -255,6 +256,16 @@ return {
     const referencedTables = {};
     const joins = [];
     walk(result, node => {
+      if(node.type == 'operator') {
+	   if(node.left && node.right){
+		// Resolve Time function
+		if(node.left.value == "time"){
+		   if(node.right.name && node.right.name.value == "now"){
+			node.right.name.timestamp = new Date().getTime();
+		   }
+		}
+	   }
+      }
       if(node.type == 'table') {
 		var select = node.table ? node.table.split('.') : [];
 		if(select && select.length > 2){

@@ -135,7 +135,8 @@ table ->
 
 where_clause ->
     WHERE __ expr {% d => ({type:'where', condition: d[2]}) %}
-  | WHERE "(" _ expr _ ")" {% d => ({type:'where', condition: d[3]}) %}
+  | WHERE __ bit_expr {% d => ({type:'where', condition: d[2] }) %}
+  | WHERE "(" _ expr _ ")" {% d => ({type:'where', condition: d[3] }) %}
 
 having_clause ->
     HAVING __ expr {% d => ({type: 'having', condition: d[2]}) %}

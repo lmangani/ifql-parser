@@ -5,7 +5,8 @@
   "main": "parser.js",
   "dependencies": {
     "moo": "^0.3.2",
-    "nearley": "^2.9.0"
+    "nearley": "^2.9.0",
+    "timestring": "^5.0.1"
   },
   "devDependencies": {
     "mocha": "^3.3.0"
