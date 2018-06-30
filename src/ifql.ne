@@ -134,8 +134,9 @@ table ->
   | identifier ( __ AS __ | __) identifier {% d => ({type: 'table', table: d[0].value, alias: d[2].value}) %}
 
 where_clause ->
-    WHERE __ expr {% d => ({type:'where', condition: d[2]}) %}
-  | WHERE "(" _ expr _ ")" {% d => ({type:'where', condition: d[3]}) %}
+    WHERE identifier bit_expr identifier {% d => ({type:'where', condition: d[2] }) %}
+  | WHERE __ expr {% d => ({type:'where', condition: d[2]}) %}
+  | WHERE "(" _ expr _ ")" {% d => ({type:'where', condition: d[3] }) %}
 
 having_clause ->
     HAVING __ expr {% d => ({type: 'having', condition: d[2]}) %}
@@ -333,6 +334,8 @@ post_simple_expr ->
 literal ->
     string {% d => d[0] %}
   | decimal {% d => ({type: 'decimal', value: d[0]}) %}
+  | decimal time_range {% d => ({type: 'decimal', value: d[0], range: d[1]}) %}
+  | decimal {% d => ({type: 'decimal', value: d[0]}) %}
   | NULLX {% d => ({type: 'null'}) %}
   | TRUE {% d => ({type: 'true'}) %}
   | FALSE {% d => ({type: 'false'}) %}
@@ -442,6 +445,12 @@ data_type ->
 
 date_unit ->
   date_unit_internal {% d => ({type: 'date_unit', date_unit: d[0].join('')}) %}
+
+time_range ->
+  D {% d => dataType('day') %}
+  | H {% d => dataType('hour') %}
+  | M {% d => dataType('minute') %}
+  | S {% d => dataType('second') %}
 
 date_unit_internal ->
     M I C R O S E C O N D

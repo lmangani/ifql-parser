@@ -9,7 +9,7 @@ InfluxDB Query Language parser using [nearley](https://www.npmjs.com/package/nea
 
 * [x] Baseline SQL parser
 * [x] FROM parser
-* [ ] TIME math
+* [x] TIME math
 * [ ] Quotes parser
 
 ### Example
