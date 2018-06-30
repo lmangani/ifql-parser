@@ -260,8 +260,21 @@ return {
 	   if(node.left && node.right){
 		// Resolve Time function
 		if(node.left.value == "time"){
-		   if(node.right.name && node.right.name.value == "now"){
-			node.right.name.timestamp = new Date().getTime();
+		   if(node.right.left && node.right.right) {
+			   if(node.right.left.name && node.right.left.name.value == "now"){
+				node.right.left.name.from_timestamp = new Date().getTime();
+				node.right.left.name.to_timestamp = node.right.left.name.from_timestamp;
+			   }
+			   if(node.right.right.range && node.right.operator){
+				var timeeq = node.right.right.value + node.right.right.range.data_type;
+				if (node.right.operator == '-') node.right.left.name.from_timestamp = new Date().getTime() - timestring(timeeq)
+				else if (node.right.operator == '+') node.right.left.name.from_timestamp = new Date().getTime() + timestring(timeeq)
+				node.right.left.name.to_timestamp = new Date().getTime();
+			   }
+		   }
+		   else if(node.right.name && node.right.name.value == "now"){
+			node.right.name.from_timestamp = new Date().getTime();
+			node.right.name.to_timestamp = node.right.name.from_timestamp;
 		   }
 		}
 	   }
