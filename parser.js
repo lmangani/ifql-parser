@@ -242,6 +242,9 @@ return {
   },
   parse(sql) {
     const parser = new nearley.Parser(grammar.ParserRules, grammar.ParserStart);
+    // Sanitize IFQL
+    var sql = sql.replace(/"/g,'');
+    var sql = sql.replace(/:/g,'');
     const parsed = parser.feed(sql);
 
     const parsedResult = parsed.results;

@@ -1,5 +1,5 @@
 # ifql-parser <img src="https://user-images.githubusercontent.com/1423657/38137158-590eefbc-3423-11e8-96dd-487022b5618c.gif" width=100 />
-InfluxDB Query Language parser using [nearley](https://www.npmjs.com/package/nearley) grammar
+InfluxDB Query Language parser
 
 ### Status
 
@@ -19,4 +19,5 @@ parser.parse('SELECT sum("load") AS mean_cpu FROM telegraf.autogen.cpu WHERE tim
 ```
 
 ##### Credits
-IFQL variant based on [js-sql-parse](https://github.com/justinkenel/js-sql-parse)
+* Parser built using the [nearley](https://www.npmjs.com/package/nearley) ToolKit
+* Grammar baseline forked from [js-sql-parse](https://github.com/justinkenel/js-sql-parse)
