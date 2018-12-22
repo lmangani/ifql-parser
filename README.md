@@ -20,7 +20,7 @@ InfluxDB Query Language parser
 ### JSON Example
 ```
 const parser = require('ifql-parser')();
-parser.parse('SELECT sum("load") AS mean_cpu FROM telegraf.autogen.cpu WHERE time > now() - 6h GROUP BY time(3600)');
+parser.parse('SELECT sum('load') AS mean_cpu FROM telegraf.autogen.cpu WHERE time > now() - 6h GROUP BY time(3600)');
 ```
 
 ##### Credits
