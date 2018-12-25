@@ -273,7 +273,7 @@ return {
 				if (node.right.operator == '-') node.right.left.name.from_timestamp = new Date().getTime() - (timestring(timeeq)*1000)
 				else if (node.right.operator == '+') node.right.left.name.from_timestamp = new Date().getTime() + (timestring(timeeq)*1000)
 				node.right.left.name.to_timestamp = new Date().getTime();
-				// console.log('FROM',node.right.left.name.from_timestamp, 'TO',node.right.left.name.to_timestamp);
+				console.log('FROM',node.right.left.name.from_timestamp, 'TO',node.right.left.name.to_timestamp);
 
 			   }
 		   }
