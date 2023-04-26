@@ -9,7 +9,7 @@
     "timestring": "^5.0.1"
   },
   "devDependencies": {
-    "mocha": "^5.2.0"
+    "mocha": "^10.2.0"
   },
   "scripts": {
     "compile": "nearleyc ./src/ifql.ne -o ifql-parse.js",
